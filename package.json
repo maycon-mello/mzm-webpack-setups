@@ -15,7 +15,16 @@
     "style-loader": "^0.20.3",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-dev-server": "^3.1.1",
+    "eslint": "~4.16.0",
+    "eslint-config-airbnb": "~16.1.0",
+    "eslint-config-airbnb-base": "~12.1.0",
+    "eslint-plugin-chai-friendly": "~0.4.0",
+    "eslint-plugin-import": "~2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-mocha": "~4.11.0",
+    "eslint-plugin-react": "^7.4.0",
+    "babel-eslint": "^8.0.1"
   },
   "scripts": {
     "dev": "NODE_ENV=development webpack --mode development",
@@ -23,6 +32,7 @@
     "start": "NODE_ENV=development webpack-dev-server --mode development --open --history-api-fallback"
   },
   "dependencies": {
+    "prop-types": "^15.6.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-loadable": "^5.3.1",
