@@ -13,16 +13,16 @@ export default class Account extends React.Component {
   };
 
   inc = () => this.setState({
-    count: this.state.count + 1,     
+    count: this.state.count + 1,
   });
 
   render() {
-    const value = this.props.value;
+    const { count } = this.state;
 
     return (
       <div className="page-account">
         <div>
-          Account page {this.state.count}
+          Account page {count}
         </div>
         <button onClick={this.inc}>Increment</button>
       </div>
