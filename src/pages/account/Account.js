@@ -7,14 +7,24 @@ type AccountState = {
 };
 
 export default class Account extends React.Component {
+  props: {
+    onClick: Function,
+  };
 
   state: AccountState = {
     count: 0,
   };
 
-  inc = () => this.setState({
-    count: this.state.count + 1,
-  });
+  static defaultProps = {
+    onClick: () => {},
+  };
+
+  handleClick = () => {
+    this.props.onClick();
+    this.setState({
+      count: this.state.count + 1,
+    });
+  }
 
   render() {
     const { count } = this.state;
@@ -24,7 +34,7 @@ export default class Account extends React.Component {
         <div>
           Account page {count}
         </div>
-        <button onClick={this.inc}>Increment</button>
+        <button onClick={this.handleClick}>Increment</button>
       </div>
     );
   }
