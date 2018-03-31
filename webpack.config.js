@@ -1,22 +1,39 @@
 const path = require('path');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        exclude: [
+          /\.html$/,
+          /\.(js|jsx)$/,
+          /\.css$/,
+          /\.scss$/,
+          /\.json$/,
+          /\.svg$/,
+        ],
+        use: [{
+          loader: 'url-loader',
+          query: {
+            limit: 10000,
+            name: 'static/media/[name].[hash:8].[ext]',
+          },
+        }],
+      },
+      {
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
+            loader: 'html-loader',
             options: { minimize: true }
           }
         ]
@@ -45,19 +62,20 @@ module.exports = {
     ]
   },
   resolve: {
-    // root: path.resolve(__dirname),
+    mainFields: ['browser', 'main', 'module'],
+    extensions: ['.js', '.json', '.jsx'],
     alias: {
       '~': path.resolve(__dirname, 'src/'),
     }
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
+      template: './src/index.html',
+      filename: './index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
-  ]
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
+  ],
 };
