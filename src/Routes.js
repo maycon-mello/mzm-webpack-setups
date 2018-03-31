@@ -5,7 +5,7 @@ import Account from './pages/account';
 
 export default () => (
   <Switch>
-    <Route exact path='/' component={Home} />
-    <Route path='/account' component={Account} />
+    <Route exact path="/" component={Home} />
+    <Route path="/account" component={Account} />
   </Switch>
 );

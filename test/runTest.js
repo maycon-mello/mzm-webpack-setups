@@ -19,15 +19,25 @@ function pass() {
 
   mocha.addFile('test/setup');
   testFiles.forEach(f => mocha.addFile(f));
-  runner = mocha.run(failures => process.on('exit', () => process.exit(failures)));
+  // eslint-disable-next-line no-console
+  runner = mocha.run(failures => process.on('exit', () => console.log(failures)));
 }
 
 function test() {
   if (argv.watch) {
     chokidar.watch(watchFiles).on('change', () => {
-      if (runner) runner.abort();
+      if (runner) {
+        runner.abort();
+      }
+
       watchFiles.forEach(f => delete require.cache[f]);
-      pass();
+
+      try {
+        pass();
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
+      }
     });
   }
   pass();

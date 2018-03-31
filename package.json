@@ -45,7 +45,10 @@
     "start": "NODE_ENV=development webpack-dev-server --mode development --open --history-api-fallback",
     "test": "NODE_ENV=test babel-node test/runTest",
     "test:watch": "yarn test --watch --reporter nyan",
-    "coverage": "nyc -n src -c false --ignore-class-method render --check-coverage --branches 100 --statements 100 --lines 100 --functions 100 -e .js npm run test"
+    "coverage": "nyc -n src -c false --ignore-class-method render --check-coverage --branches 100 --statements 100 --lines 100 --functions 100 -e .js npm run test",
+    "coverage:watch": "watch 'yarn coverage' src",
+    "eslint": "eslint --ext .js src test",
+    "eslint:watch": "watch 'yarn eslint' src test"
   },
   "dependencies": {
     "enzyme": "^3.3.0",

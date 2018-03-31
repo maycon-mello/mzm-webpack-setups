@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom'
 
 const app = (
   <BrowserRouter>
@@ -9,4 +9,4 @@ const app = (
   </BrowserRouter>
 );
 
-ReactDOM.render(app, document.getElementById("app"));
+ReactDOM.render(app, document.getElementById('app'));
